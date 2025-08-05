@@ -1,0 +1,212 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: url("https://www.transparenttextures.com/patterns/balloons.png") repeat;
+  background-color: #fbd0d9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Overlay for greeting section */
+.overlay {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(8px);
+  width: 100%;
+  padding: 60px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Main greeting box */
+.container {
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  padding: 40px 30px;
+  max-width: 500px;
+  width: 90%;
+  animation: fadeIn 1.5s ease-in;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: #ff6b81;
+  margin-bottom: 20px;
+}
+
+p {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+button {
+  padding: 12px 25px;
+  background: #ff6b81;
+  color: white;
+  font-size: 1rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background: #ff4d6d;
+}
+
+/* Card Section Wrapper */
+.card-wrapper {
+  width: 100%;
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Card Container */
+.card-section {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Individual Cards */
+.card-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 30px 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+  flex-wrap: wrap;
+}
+
+.card-section {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card {
+  width: 280px;
+  height: 360px;
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px;
+  text-align: center;
+}
+
+.card img {
+  width: 100%;
+  height: 255px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.card p {
+  margin-top: 15px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .card {
+    width: 90%;
+  }
+}
+/* Balloons Animation Background */
+.balloons {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.balloon {
+  position: absolute;
+  bottom: -150px;
+  width: 40px;
+  height: 60px;
+  background: radial-gradient(circle at 50% 40%, #ff6b81 40%, #ff4d6d 100%);
+  border-radius: 50% 50% 40% 40%;
+  animation: floatUp 10s linear infinite;
+  opacity: 0.7;
+  box-shadow: inset -3px -3px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Balloon string */
+.balloon::after {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  width: 2px;
+  height: 20px;
+  background: #444;
+  transform: translateX(-50%);
+}
+
+/* Animation for upward float */
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-120vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Message Animation on Click */
+@keyframes pop {
+  0% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.2) rotate(3deg);
+  }
+  50% {
+    transform: scale(1.1) rotate(-3deg);
+  }
+  75% {
+    transform: scale(1.2) rotate(2deg);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.animate-message {
+  animation: pop 0.6s ease-in-out;
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>💙💙💙</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+
+</head>
+<body style="font-family: 'Great Vibes', cursive;">
+
+<div class="overlay">
+  <div class="container letter-box">
+    <h2>💌 My Message For You</h2>
+    <p class="letter-text">
+        Since our first FaceTime call, you’ve made my days brighter and my heart happier.
+        Every time I hear your stories, I feel closer to you—and I care deeply about every word you share.
+        This letter may not sparkle like the stars, but it shines with my love for you.
+        Always remember—you are my favorite person, my safe place, my love. 💖
+    </p>
+    <a href="main.html" class="btn btn-primary">Home</a>
+  </div>
+</div>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const textElement = document.querySelector(".letter-text");
+    const fullText = textElement.innerHTML; // store the original message
+    textElement.innerHTML = ""; // clear text
+    let i = 0;
+
+    function typeWriter() {
+      if (i < fullText.length) {
+        textElement.innerHTML += fullText.charAt(i);
+        i++;
+        setTimeout(typeWriter, 50); // typing speed (50ms per character)
+      }
+    }
+
+    typeWriter();
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

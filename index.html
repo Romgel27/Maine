@@ -1,91 +1,168 @@
+<!-- prank-warning.html — Safe, clearly-labelled prank interstitial -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>🎉 Happy Birthday</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>⚠️ Attention — Preview</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#fff6f7;
+      --danger:#d9534f;
+      --accent:#ff6b81;
+      --muted:#6b6b6b;
+    }
+    html,body{height:100%;margin:0;font-family: 'Montserrat', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;}
+    body{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background: linear-gradient(180deg, #fff 0%, #fff6f7 100%);
+      padding:24px;
+      color:#222;
+    }
+    .card{
+      width:100%;
+      max-width:760px;
+      background: linear-gradient(180deg,#fff 0,#fffaf8 100%);
+      border-radius:14px;
+      box-shadow: 0 18px 40px rgba(13,13,13,0.12);
+      padding:28px;
+      text-align:center;
+      border: 1px solid rgba(0,0,0,0.04);
+    }
+    .icon {
+      display:inline-grid;
+      place-items:center;
+      width:110px;
+      height:110px;
+      border-radius:50%;
+      background: linear-gradient(135deg,var(--danger), #ff8b95);
+      color:#fff;
+      font-size:44px;
+      margin:0 auto 18px;
+      box-shadow: 0 8px 24px rgba(217,83,79,0.18);
+    }
+    h1{
+      margin:6px 0 6px;
+      font-size:1.85rem;
+      letter-spacing:-0.5px;
+      color:var(--danger);
+      font-weight:800;
+    }
+    p.lead{
+      margin:10px 0 18px;
+      color:var(--muted);
+      font-size:1rem;
+    }
+
+    .prank-note{
+      margin:18px auto 24px;
+      display:inline-block;
+      padding:10px 14px;
+      border-radius:10px;
+      background: #fff3f4;
+      color: #7a2a2a;
+      border: 1px dashed rgba(217,83,79,0.25);
+      font-weight:600;
+    }
+
+    .controls{
+      display:flex;
+      gap:12px;
+      justify-content:center;
+      align-items:center;
+      flex-wrap:wrap;
+      margin-top:6px;
+    }
+    .btn{
+      padding:12px 20px;
+      border-radius:10px;
+      border: none;
+      cursor:pointer;
+      font-weight:700;
+      font-size:0.98rem;
+    }
+    .btn-proceed{
+      background: linear-gradient(90deg,var(--accent), #ff8b95);
+      color:#fff;
+      box-shadow: 0 8px 18px rgba(255,107,129,0.18);
+    }
+    .btn-back{
+      background:transparent;
+      color:var(--muted);
+      border:1px solid rgba(0,0,0,0.06);
+    }
+
+    small{
+      display:block;
+      margin-top:14px;
+      color: #7e7e7e;
+    }
+
+    /* subtle pulse to make it playful */
+    @keyframes pulse {
+      0%{ transform: scale(1); }
+      50%{ transform: scale(1.03); }
+      100%{ transform: scale(1); }
+    }
+    .icon { animation: pulse 2.4s ease-in-out infinite; }
+
+    /* accessibility focus */
+    .btn:focus{ outline: 3px solid rgba(88,183,238,0.22); outline-offset:3px; }
+
+    /* small screen adjustments */
+    @media (max-width:420px){
+      .card{ padding:18px; }
+      .icon{ width:92px; height:92px; font-size:36px; }
+    }
+  </style>
 </head>
 <body>
-  <!-- Top Greeting Section -->
-   <!-- Falling Balloons Background -->
-<div class="balloons">
-  <div class="balloon" style="left: 10%; animation-delay: 0s;"></div>
-  <div class="balloon" style="left: 30%; animation-delay: 2s;"></div>
-  <div class="balloon" style="left: 50%; animation-delay: 4s;"></div>
-  <div class="balloon" style="left: 70%; animation-delay: 1s;"></div>
-  <div class="balloon" style="left: 90%; animation-delay: 3s;"></div>
-</div>
-  <div class="overlay">
-    <!-- Falling Balloons Background -->
-<div class="balloons">
-  <div class="balloon" style="left: 10%; animation-delay: 0s;"></div>
-  <div class="balloon" style="left: 30%; animation-delay: 2s;"></div>
-  <div class="balloon" style="left: 50%; animation-delay: 4s;"></div>
-  <div class="balloon" style="left: 70%; animation-delay: 1s;"></div>
-  <div class="balloon" style="left: 90%; animation-delay: 3s;"></div>
-</div>
-    <div class="container">
-      <h1 id="greeting">🎉Happy Birthday Germaine!🎂</h1>
-      <p id="message">Wishing you a day filled with love, laughter, and cake! 🍰</p>
-      <button onclick="changeMessage()">Click ME! 🎁</button>
+  <div class="card" role="alertdialog" aria-labelledby="warnTitle">
+    <div class="icon" aria-hidden="true">⚠️</div>
+    <h1 id="warnTitle">Preview Notice</h1>
+     <p>security warning.</p>
+
+    <div class="prank-note" id="prankNote">
+      ⚠️ <strong>Warning:</strong>
     </div>
+
+    <p style="max-width:680px;margin:0 auto;color:#444;line-height:1.45;">
+      If you intended to continue to the main content, click <strong>Proceed to Site</strong> below.
+      <br>
+    </p>
+
+    <div class="controls" style="margin-top:20px;">
+      <!-- Proceed opens the main file (adjust path as needed) -->
+      <button class="btn btn-proceed" id="proceedBtn" onclick="proceed()">Proceed to Site</button>
+
+      <!-- Back button for safety -->
+      <button class="btn btn-back" onclick="goBack()">Return / Cancel</button>
+    </div>
+
+    <small aria-hidden="true">This is clearly labelled as a prank. Do not use to mislead or harm others.</small>
   </div>
 
-  <!-- Card Section (Centered Below) -->
-  <div class="card-wrapper">
-    <div class="card-section">
-      <div class="card">
-        <img src="imgs/1.jpg" alt="Birthday Cake">
-        <p>Make a wish! 🎂</p>
-      </div>
-      <div class="card">
-        <img src="imgs/2.jpg" alt="Party Balloons">
-        <p>Celebrate with joy 🎈</p>
-      </div>
-      <div class="card">
-        <img src="imgs/4.jpg" alt="Friends">
-        <p>Moments with Family 🥳</p>
-      </div>
-      <div class="card">
-        <img src="imgs/3.jpg" alt="Friends">
-        <p>Germaine🥳</p>
-      </div>
+  <script>
+    // Proceed — navigate to your real page (change 'main.html' to your file)
+    function proceed(){
+      // Optional small animation or countdown
+      document.getElementById('proceedBtn').disabled = true;
+      document.getElementById('proceedBtn').textContent = 'Opening...';
+      setTimeout(() => { window.location.href = 'main.html'; }, 700);
+    }
 
-            </div>
-      <div class="card">
-        <img src="imgs/5.jpg" alt="Friends">
-        <p>🎂🎁</p>
-      </div>
-    </div>
-  </div>
-<audio id="birthdayAudio" autoplay loop>
-  <source src="happy-birthday.mp3" type="audio/mpeg" />
-  Your browser does not support the audio element.
-</audio>
-
-<script>
-  function changeMessage() {
-    const messages = [
-      "Hope your birthday is as amazing as you are! 🥳",
-      "Another year older, wiser, and more fabulous! ✨",
-      "Keep smiling and celebrate big! 🎊",
-      "Let’s party and make it unforgettable! 🎈",
-      "May your dreams come true this year! 💫"
-    ];
-    const msg = messages[Math.floor(Math.random() * messages.length)];
-    const messageEl = document.getElementById('message');
-    messageEl.textContent = msg;
-
-    // Add animation class
-    messageEl.classList.add('animate-message');
-
-    // Remove the animation class after animation ends
-    messageEl.addEventListener('animationend', () => {
-      messageEl.classList.remove('animate-message');
-    }, { once: true });
-  }
-</script>
-
+    // Go back safely
+    function goBack(){
+      if (document.referrer) {
+        window.location.href = document.referrer;
+      } else {
+        // fallback: go to an index page or close
+        window.location.href = 'index.html';
+      }
+    }
+  </script>
 </body>
 </html>

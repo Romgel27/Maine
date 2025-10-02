@@ -2,17 +2,18 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Segoe UI', sans-serif;
-  background: url("https://www.transparenttextures.com/patterns/balloons.png") repeat;
+  background: url("imgs/paper-bg.jpg") repeat;
   background-color: #fbd0d9;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
+
+
 /* Overlay for greeting section */
 .overlay {
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(8px);
+
   width: 100%;
   padding: 60px 0;
   display: flex;
@@ -22,7 +23,7 @@ body {
 
 /* Main greeting box */
 .container {
-  background: #fff;
+  
   border-radius: 20px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
   text-align: center;
@@ -33,14 +34,16 @@ body {
 }
 
 h1 {
-  font-size: 2.5rem;
-  color: #ff6b81;
-  margin-bottom: 20px;
+  font-size: 7.5rem;
+  font-family:cursive;
+  color: #6bb0ff;
+  margin-bottom: 50px;
 }
 
 p {
   font-size: 1.2rem;
-  color: #333;
+  font-weight: bold;
+  color: #123c6b;
   margin-bottom: 30px;
   line-height: 1.6;
 }
@@ -57,7 +60,7 @@ button {
 }
 
 button:hover {
-  background: #ff4d6d;
+  background: #58b7ee;
 }
 
 /* Card Section Wrapper */
@@ -81,7 +84,7 @@ button:hover {
   display: flex;
   justify-content: center;
   padding: 30px 20px;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: transparent;
   flex-wrap: wrap;
 }
 
@@ -95,7 +98,7 @@ button:hover {
 .card {
   width: 280px;
   height: 360px;
-  background-color: #fff;
+  background-color:transparent;
   border-radius: 15px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   overflow: hidden;
@@ -125,6 +128,35 @@ button:hover {
   transform: scale(1.05);
 }
 
+/* Letter Box Style */
+.letter-box {
+  background: #fffdf7;
+  border: 10px solid #f5c6d6;
+  border-radius: 20px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  padding: 30px;
+  animation: fadeIn 1.5s ease-in;
+}
+
+.letter-box h2 {
+  font-family: cursive;
+  font-size: 2rem;
+  color: #e75480;
+  margin-bottom: 20px;
+}
+
+.letter-text {
+  font-size: 1.8rem;
+  color: #333;
+  font-style:normal;
+  line-height: 1.8;
+  text-align: justify;
+  padding: 15px;
+  border-left: 4px solid #ff9ebb;
+  background: #fff7fa;
+  border-radius: 10px;
+} 
+
 
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(30px); }
@@ -138,40 +170,34 @@ button:hover {
   }
 }
 /* Balloons Animation Background */
-.balloons {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  overflow: hidden;
-  z-index: 0;
+.sunflower {
+  position: absolute;
+  top: -100px;
+  width: 80px;
+  height: 80px;
+  background: radial-gradient(circle, #5c3b0d 25%, transparent 26%), 
+              radial-gradient(circle, #ffcc00 45%, transparent 46%);
+  border-radius: 50%;
+  animation: fall 6s linear infinite;
 }
 
-.balloon {
+.sunflower::before {
+  content: "";
   position: absolute;
-  bottom: -150px;
-  width: 40px;
-  height: 60px;
-  background: radial-gradient(circle at 50% 40%, #ff6b81 40%, #ff4d6d 100%);
-  border-radius: 50% 50% 40% 40%;
-  animation: floatUp 10s linear infinite;
-  opacity: 0.7;
-  box-shadow: inset -3px -3px 5px rgba(0, 0, 0, 0.2);
+  top: -20px;
+  left: -20px;
+  width: 120px;
+  height: 120px;
+  background: repeating-conic-gradient(#ffda03 0deg 20deg, transparent 20deg 30deg);
+  border-radius: 50%;
+  z-index: -1;
 }
 
-/* Balloon string */
-.balloon::after {
-  content: '';
-  position: absolute;
-  bottom: -20px;
-  left: 50%;
-  width: 2px;
-  height: 20px;
-  background: #444;
-  transform: translateX(-50%);
+@keyframes fall {
+  0% { top: -100px; opacity: 1; }
+  100% { top: 100vh; opacity: 0; }
 }
+
 
 /* Animation for upward float */
 @keyframes floatUp {
